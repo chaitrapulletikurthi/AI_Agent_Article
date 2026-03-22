@@ -1,1 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echoes of the Unheard</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: #ffffff;
+      --text: #162033;
+      --muted: #5f6b7a;
+      --border: rgba(22, 32, 51, 0.08);
+      --accent: #f4c542;
+      --accent-deep: #c99700;
+      --ink: #0f172a;
+      --soft: #eef2f9;
+      --shadow: 0 20px 55px rgba(15, 23, 42, 0.09);
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.05);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --maxw: 1140px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.75;
+      background:
+        radial-gradient(circle at top left, rgba(244, 197, 66, 0.22), transparent 22%),
+        radial-gradient(circle at 90% 10%, rgba(244, 197, 66, 0.12), transparent 18%),
+        linear-gradient(180deg, #f9fbff 0%, #f4f6fb 44%, #eef2f7 100%);
+    }
+
+    a { color: inherit; }
+
+    ::selection {
+      background: rgba(244, 197, 66, 0.28);
+      color: var(--ink);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(15, 23, 42, 0.025) 0.7px, transparent 0.7px);
+      background-size: 18px 18px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.28), transparent 55%);
+      z-index: 0;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 28px auto 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92)),
+        linear-gradient(120deg, #fff8dc, #ffffff);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      border-radius: 34px;
+      padding: 44px 42px 34px;
+      isolation: isolate;
+    }
+
+    .hero-meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .hero-meta-line span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    .hero::before {
+      width: 280px;
+      height: 280px;
+      background: rgba(244, 197, 66, 0.16);
+      top: -90px;
+      right: -40px;
+    }
+
+    .hero::after {
+      width: 180px;
+      height: 180px;
+      background: rgba(15, 23, 42, 0.05);
+      bottom: -60px;
+      left: -30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(244, 197, 66, 0.14);
+      border: 1px solid rgba(244, 197, 66, 0.28);
+      color: #7a5a00;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.3rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      max-width: 820px;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 1.18rem;
+      color: var(--muted);
+      max-width: 760px;
+      font-weight: 600;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .meta-chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: rgba(15, 23, 42, 0.97);
+      color: #f8fafc;
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+      color: #fde68a;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 14px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat .num {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .stat .label {
+      font-size: 0.92rem;
+      color: rgba(248,250,252,0.8);
+    }
+
+    .section {
+      margin-top: 24px;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: var(--shadow-soft);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, rgba(244,197,66,0.9), rgba(244,197,66,0.18));
+      opacity: 0.9;
+    }
+
+    .section-inner {
+      padding: 34px 36px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(244, 197, 66, 0.26), rgba(244, 197, 66, 0.08));
+      color: #7a5a00;
+      font-weight: 800;
+      border: 1px solid rgba(244, 197, 66, 0.35);
+      flex-shrink: 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      letter-spacing: -0.025em;
+      color: var(--ink);
+    }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 1.04rem;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: #334155;
+    }
+
+    .highlight-box {
+      margin-top: 20px;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(244, 197, 66, 0.15), rgba(244, 197, 66, 0.05));
+      border: 1px solid rgba(244, 197, 66, 0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .quote-band {
+      margin-top: 20px;
+      padding: 22px 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #0f172a, #182437);
+      color: #f8fafc;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-band::before {
+      content: "“";
+      position: absolute;
+      top: -4px;
+      left: 16px;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.08);
+      font-weight: 900;
+    }
+
+    .quote-band p {
+      position: relative;
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 650;
+      color: #f8fafc;
+    }
+
+    .workflow {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--border);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .step:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+      border-color: rgba(244, 197, 66, 0.26);
+    }
+
+    .step-index {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      color: white;
+      box-shadow: 0 10px 22px rgba(17, 24, 39, 0.16);
+    }
+
+    .step p:last-child,
+    .step ul:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 8px 0 16px 22px;
+      padding: 0;
+    }
+
+    li { margin-bottom: 8px; }
+
+    .formula-card {
+      margin: 18px 0 16px;
+      padding: 22px 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fffdf5, #ffffff);
+      border: 1px solid rgba(244, 197, 66, 0.24);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+    }
+
+    .formula-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(244,197,66,0.14);
+      color: #7a5a00;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .formula {
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.74);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -30px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(244, 197, 66, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: white;
+      box-shadow: var(--shadow-soft);
+    }
+
+    th, td {
+      padding: 14px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      font-size: 0.98rem;
+    }
+
+    th:last-child, td:last-child { border-right: none; }
+    tbody tr:last-child td { border-bottom: none; }
+
+    th {
+      background: #f8fafc;
+      color: #334155;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    tbody tr:hover td {
+      background: #fcfdff;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .impact-item {
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,250,252,0.9));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .impact-item strong {
+      display: block;
+      font-size: 1.02rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .closing {
+      text-align: center;
+      padding: 44px 30px;
+      background: linear-gradient(135deg, #0f172a, #1a2435);
+      color: #f8fafc;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      margin-top: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .closing::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(244,197,66,0.12);
+    }
+
+    .closing h2 {
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .closing p {
+      color: rgba(248,250,252,0.92);
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .closing .final-line {
+      margin-top: 18px;
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: #fde68a;
+    }
+
+    .abstract {
+      margin-top: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(250,251,255,0.92));
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .abstract-grid {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 0;
+    }
+
+    .abstract-label {
+      background: linear-gradient(180deg, rgba(244,197,66,0.18), rgba(244,197,66,0.08));
+      border-right: 1px solid var(--border);
+      padding: 24px 20px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a5a00;
+    }
+
+    .abstract-content {
+      padding: 24px 26px;
+    }
+
+    .abstract-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .framework-panel {
+      margin-top: 20px;
+      padding: 24px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,253,0.94));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .framework-title {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .framework-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #f8fafc, #f3f6fb);
+      border: 1px solid rgba(22, 32, 51, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+    }
+
+    .framework-caption {
+      margin: 12px 0 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .framework-chip {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      fill: #7a5a00;
+    }
+
+    .framework-box-title {
+      font-size: 16px;
+      font-weight: 800;
+      fill: #0f172a;
+    }
+
+    .framework-box-text {
+      font-size: 12.5px;
+      fill: #475569;
+    }
+
+    .framework-note {
+      font-size: 13px;
+      font-weight: 700;
+      fill: #5f6b7a;
+    }
+
+    .keywords {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .keyword-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(244, 197, 66, 0.12);
+      border: 1px solid rgba(244, 197, 66, 0.22);
+      color: #7a5a00;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .figure-frame {
+      margin: 20px 0 30px;
+      padding: 14px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(246,248,252,0.92));
+      border: 1px solid rgba(22, 32, 51, 0.08);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .figure-frame img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .figure-caption {
+      font-size: 0.9rem;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .figure-caption strong {
+      color: var(--ink);
+    }
+
+    .references {
+      margin-top: 18px;
+      padding: 24px 26px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .references h3 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .references ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .references li {
+      margin-bottom: 10px;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+
+    .references a {
+      color: #0f4c81;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 76, 129, 0.18);
+    }
+
+    .references a:hover {
+      border-bottom-color: rgba(15, 76, 129, 0.5);
+    }
+
+    .footnotes {
+      margin-top: 18px;
+      padding: 22px 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footnotes p:last-child { margin-bottom: 0; }
+
+    .top-link {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(15,23,42,0.9);
+      color: white;
+      text-decoration: none;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+      font-size: 1.1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .two-col,
+      .impact-grid,
+      .framework-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-box:not(:last-child)::after {
+        content: "↓";
+        right: 50%;
+        top: auto;
+        bottom: -16px;
+        transform: translateX(50%);
+      }
+
+      .abstract-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .abstract-label {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        width: min(var(--maxw), calc(100% - 18px));
+        margin-top: 12px;
+      }
+
+      .hero,
+      .section-inner,
+      .closing {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .section-inner {
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-index {
+        width: 50px;
+        height: 50px;
+        border-radius: 16px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell" id="top">
+    <header class="hero">
+      <div class="eyebrow">SWDSI Conference Presentation • March 2026</div>
+      <div>
+        <h1>Echoes of the Unheard: Why the Calls You Miss Are Costing You More Than You Think</h1>
+        <p class="subtitle">How an Agentic AI Framework Is Redefining Customer Interaction Prioritization for Small Hospitality Businesses</p>
+        <p class="subtitle" style="margin-top:14px; font-weight:500;">By Chaitra Neha Pulletikurthi and Neola Grannita D Sa</p>
+        <p class="subtitle" style="margin-top:6px; font-weight:400; font-size:1rem;">University of North Texas</p>
+        <div class="hero-meta-line">
+          <span>Research Blog</span>
+          <span>Conceptual Framework</span>
+          <span>Hospitality Analytics</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="abstract">
+      <div class="abstract-grid">
+        <div class="abstract-label">Abstract</div>
+        <div class="abstract-content">
+          <p>This article presents <em>Echoes of the Unheard</em>, an agentic AI framework for prioritizing customer interactions in small hospitality businesses. The framework combines speech-to-text, AI signal extraction, and Multi-Criteria Decision Analysis (MCDA) to rank calls based on sentiment, urgency, and business value. By moving beyond traditional operational metrics, the proposed approach aims to support better callback prioritization, recover missed revenue opportunities, and improve service responsiveness under constrained staffing conditions.</p>
+          <div class="keywords">
+            <span class="keyword-chip">Agentic AI</span>
+            <span class="keyword-chip">MCDA</span>
+            <span class="keyword-chip">Voice AI</span>
+            <span class="keyword-chip">Hospitality Analytics</span>
+            <span class="keyword-chip">Customer Prioritization</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-number">01</div>
+          <h2>The Silent Revenue Drain</h2>
+        </div>
+        <p class="lead">Picture a Friday evening at a small boutique hotel. The front desk is slammed. The phone rings. Then rings again. And again. No one answers.</p>
+        <p>Those missed calls aren't just a service inconvenience — they are a measurable, recurring financial wound. Research shows that the average business loses approximately $126,000 annually from unanswered calls, with 85% of callers unlikely to ever dial back. In hospitality specifically, losing just 10% of inbound calls during peak hours can cost upward of $27,000 per year in missed revenue alone.</p>
+        <p>And the damage doesn't stop at the ledger. One unanswered call from a dissatisfied guest can spiral into a negative review that quietly reshapes how future guests perceive a property before they ever walk through the door.</p>
+        <div class="highlight-box">
+          <p style="margin:0;"><strong>This is the quiet crisis facing small hospitality businesses today:</strong> peak demand, limited staff, and a customer service system that treats every interaction the same — whether it matters or not.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-number">02</div>
+          <h2>The Gap Between Data and Decisions</h2>
+        </div>
+        <div class="two-col">
+          <div>
+            <p>The hospitality industry has call volume reports, response time dashboards, and customer satisfaction scores. Operations teams have no shortage of metrics to review.</p>
+            <p>But here is the uncomfortable truth 74% of current customer service systems measure only operational activity, not business value<sup>1</sup>. They tell you how many calls came in. They don't tell you which calls mattered most.</p>
+            <p>A guest calling to book a table for twelve on New Year's Eve is not the same as someone asking for directions to the parking lot. Yet, without a smarter system in place, both calls go into the same queue, or worse both get missed and follow-up happens in any order that feels convenient.</p>
+            <p>This is the problem our research set out to address.</p>
+          </div>
+          <div class="card">
+            <p style="margin-top:0;"><strong>Current systems track:</strong></p>
+            <ul>
+              <li>Call volume</li>
+              <li>Response time</li>
+              <li>Customer satisfaction scores</li>
+            </ul>
+            <p style="margin-bottom:0;"><strong>What they often miss:</strong><br>Which interaction actually mattered most.</p>
+          </div>
+        </div>
+        <div class="quote-band">
+          <p>They tell you how many calls came in. They don't tell you which calls mattered most.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-number">03</div>
+          <h2>Framework: Agentic AI Meets Decision-Making</h2>
+        </div>
+        <p>Our voice AI framework is designed specifically to help small hospitality businesses stop reacting to everything and start prioritizing what actually drives outcomes.</p>
+        <p>The framework operates across a clear, end-to-end workflow:</p>
+
+        <div class="framework-panel">
+          <p class="framework-title">Framework Overview</p>
+          <div class="figure-frame">
+            <img src="framework.png" alt="Agentic AI Framework" />
+            <p class="figure-caption"><strong>Figure 1.</strong> Proposed framework showing how customer calls move through transcription, reasoning, prioritization, knowledge support, and dashboard feedback loops. <em>Source: Authors’ conceptual design.</em></p>
+          </div>
+        </div>
+
+        <div class="workflow">
+          <div class="step">
+            <div class="step-index">a</div>
+            <div>
+              <p><strong>The Call Comes in:</strong> A customer call is received and processed through input guardrails that screen for safety and relevance before any AI analysis begins.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">b</div>
+            <div>
+              <p><strong>Speech-to-Text Transcription:</strong> The conversation is transcribed in real time, converting the voice into text.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">c</div>
+            <div>
+              <p><strong>AI Signal Extraction:</strong> This is the reasoning engine that extracts three critical signals from each call-</p>
+              <ul>
+                <li><strong>Sentiment:</strong> Is the customer frustrated, neutral, or satisfied? Emotional tone is a leading indicator of churn risk and urgency.</li>
+                <li><strong>Urgency:</strong> How time-sensitive is this request? A reservation for tonight is different from a general inquiry.</li>
+                <li><strong>Business Value:</strong> What is the potential revenue or retention impact if this call goes unaddressed?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">d</div>
+            <div>
+              <p><strong>Multi-Criteria Decision Analysis (MCDA) Priority Scoring:</strong> Each call is assigned a weighted priority score- Priority Score = w₁(Sentiment) + w₂(Urgency) + w₃(Business Value)</p>
+              <div class="formula-card">
+                <div class="formula-label">Priority Model</div>
+                <div class="formula">Priority Score = w₁(Sentiment) + w₂(Urgency) + w₃(Business Value)</div>
+              </div>
+              <p>Initial weights are calibrated by domain expertise, assuming business value to be highest, and to evolve learning optimal weights over time from historical data.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">e</div>
+            <div>
+              <p><strong>Routing and Response:</strong> Simple, knowledge-base queries (FAQs, policies, hours) receive an automated Text-to-Speech response immediately. Complex interactions are escalated to a human agent, flagged by priority tier. Every interaction is updated in the live dashboard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-number">04</div>
+          <h2>What Priority Actually Looks Like in Practice</h2>
+        </div>
+        <p>Consider three calls arriving simultaneously at a small restaurant on a Saturday evening:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Call</th>
+              <th>Sentiment</th>
+              <th>Urgency</th>
+              <th>Business Value</th>
+              <th>Priority Tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Guest trying to make a reservation immediately</td>
+              <td>Negative</td>
+              <td>High</td>
+              <td>High</td>
+              <td>🔴 High</td>
+            </tr>
+            <tr>
+              <td>Recent guest with a follow-up</td>
+              <td>Neutral</td>
+              <td>Moderate</td>
+              <td>Moderate</td>
+              <td>🟡 Medium</td>
+            </tr>
+            <tr>
+              <td>Caller asking about parking</td>
+              <td>Positive</td>
+              <td>Low</td>
+              <td>Low</td>
+              <td>🟢 Low</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>To illustrate how this framework translates into real-world operations, the following conceptual dashboard shows how prioritized interactions could be surfaced for decision-making.</p>
+
+        <div class="figure-frame">
+          <img src="dashboard.png" alt="Conceptual Priority Dashboard" />
+          <p class="figure-caption"><strong>Figure 2.</strong> Conceptual dashboard illustrating how prioritized interactions would be surfaced based on sentiment, urgency, and business value. <em>Source: Authors’ conceptual mockup.</em></p>
+        </div>
+
+        <p>Without a framework, callbacks happen randomly, often in reverse order of impact. With MCDA-driven prioritization, the reservation call gets addressed first (revenue recovery), the complaint follows (retention risk), and the parking inquiry is handled whenever capacity allows.</p>
+        <div class="quote-band">
+          <p>This isn't automation replacing judgment. It's AI amplifying judgment — at scale, in real time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-number">05</div>
+          <h2>The Bigger Shift: From Activity Metrics to Impact Intelligence</h2>
+        </div>
+        <p>What makes this framework genuinely different is the underlying philosophy shift it demands.</p>
+        <p>Most service teams are trained to optimize for throughput: answer more calls, reduce hold times, close tickets faster. These are legitimate goals but they measure activity, not impact. A team can hit every SLA and still lose the customers who mattered most, simply because no one knew they mattered most.</p>
+        <p>Advanced analytics is prioritized by business value, not just by arrival order. This can improve customer satisfaction by 15% and revenue outcomes by 5%<sup>2</sup>.</p>
+        <p>The question shifts from "How many calls did we handle today?" to "Did we handle the right calls first?"</p>
+
+        <div class="impact-grid">
+          <div class="impact-item">
+            <strong>Activity</strong>
+            <span>How many calls came in or were handled.</span>
+          </div>
+          <div class="impact-item">
+            <strong>Impact</strong>
+            <span>Which calls carried the highest business consequence.</span>
+          </div>
+          <div class="impact-item">
+            <strong>Decision Quality</strong>
+            <span>Whether the right interaction received attention first.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-number">06</div>
+          <h2>What Comes Next</h2>
+        </div>
+        <p>Echoes of the Unheard is an early-stage framework with significant runway ahead. Our future research directions include:</p>
+        <ul>
+          <li>Training the model on real call transcripts to validate and refine signal extraction accuracy</li>
+          <li>Optimizing MCDA weights using historical outcome data — moving from expert-calibrated assumptions to empirically grounded parameters</li>
+          <li>Expanding agent capabilities beyond prioritization into active booking management, payment handling, and predictive guest insights</li>
+        </ul>
+        <div class="highlight-box">
+          <p style="margin:0;">The ROI equation for this framework is straightforward: recovered missed booking revenue + reduced staffing overhead + 24/7 relevant responsiveness = compounding returns over time. And for small hospitality businesses operating on thin margins during unpredictable seasons, that compounding matters enormously.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>Final Thought</h2>
+      <p>In a world where staff bandwidth is finite, the businesses that learn to distinguish signal from noise, urgency from routine, revenue risk from general inquiry will outperform those that don't.</p>
+      <p>The calls your team missed today weren't silent. They had something to say.</p>
+      <p class="final-line">The question is whether your systems were listening.</p>
+    </section>
+
+    <section class="references">
+      <h3>References</h3>
+      <ol>
+        <li>Deloitte. <em>A new story for contact centres</em>. <a href="https://www.deloitte.com/ca/en/Industries/tmt/perspectives/a-new-story-for-contact-centres.html" target="_blank">View source</a></li>
+        <li>McKinsey &amp; Company. <em>Next best experience: How AI can power every customer interaction</em>. <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/next-best-experience-how-ai-can-power-every-customer-interaction" target="_blank">View source</a></li>
+      </ol>
+    </section>
+  </div>
+
+  <a class="top-link" href="#top" aria-label="Back to top">↑</a>
+</body>
+</html>
 
