@@ -327,7 +327,7 @@
 
     .step {
       display: grid;
-      grid-template-columns: 58px 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
       align-items: start;
       padding: 18px;
@@ -344,16 +344,7 @@
     }
 
     .step-index {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      font-size: 1rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #111827, #1f2937);
-      color: white;
-      box-shadow: 0 10px 22px rgba(17, 24, 39, 0.16);
+      display: none;
     }
 
     .step p:last-child,
@@ -806,10 +797,11 @@
     <header class="hero">
       <div class="eyebrow">SWDSI Conference Presentation • March 2026</div>
       <div>
-        <h1>Echoes of the Unheard: Why the Calls You Miss Are Costing You More Than You Think</h1>
+        <h1>Echoes of Unheard</h1>
         <p class="subtitle">How an Agentic AI Framework Is Redefining Customer Interaction Prioritization for Small Hospitality Businesses</p>
         <p class="subtitle" style="margin-top:14px; font-weight:500;">By Chaitra Neha Pulletikurthi and Neola Grannita D Sa</p>
         <p class="subtitle" style="margin-top:6px; font-weight:400; font-size:1rem;">University of North Texas</p>
+        
         <div class="hero-meta-line">
           <span>Research Blog</span>
           <span>Conceptual Framework</span>
@@ -897,21 +889,21 @@
 
         <div class="workflow">
           <div class="step">
-            <div class="step-index">a</div>
+            <div class="step-index"></div>
             <div>
               <p><strong>The Call Comes in:</strong> A customer call is received and processed through input guardrails that screen for safety and relevance before any AI analysis begins.</p>
             </div>
           </div>
 
           <div class="step">
-            <div class="step-index">b</div>
+            <div class="step-index"></div>
             <div>
               <p><strong>Speech-to-Text Transcription:</strong> The conversation is transcribed in real time, converting the voice into text.</p>
             </div>
           </div>
 
           <div class="step">
-            <div class="step-index">c</div>
+            <div class="step-index"></div>
             <div>
               <p><strong>AI Signal Extraction:</strong> This is the reasoning engine that extracts three critical signals from each call-</p>
               <ul>
@@ -923,7 +915,7 @@
           </div>
 
           <div class="step">
-            <div class="step-index">d</div>
+            <div class="step-index"></div>
             <div>
               <p><strong>Multi-Criteria Decision Analysis (MCDA) Priority Scoring:</strong> Each call is assigned a weighted priority score- Priority Score = w₁(Sentiment) + w₂(Urgency) + w₃(Business Value)</p>
               <div class="formula-card">
@@ -935,7 +927,7 @@
           </div>
 
           <div class="step">
-            <div class="step-index">e</div>
+            <div class="step-index"></div>
             <div>
               <p><strong>Routing and Response:</strong> Simple, knowledge-base queries (FAQs, policies, hours) receive an automated Text-to-Speech response immediately. Complex interactions are escalated to a human agent, flagged by priority tier. Every interaction is updated in the live dashboard.</p>
             </div>
@@ -1065,5 +1057,3 @@
   <a class="top-link" href="#top" aria-label="Back to top">↑</a>
 </body>
 </html>
-
-
