@@ -1,7 +1,7 @@
 # Echoes of the Unheard
 ### How an Agentic AI Framework Is Redefining Customer Interaction Prioritization for Small Hospitality Businesses
 
-> *Chaitra Neha Pulletikurthi & Neola Grannita D Sa — University of North Texas*
+> *Chaitra Neha Pulletikurthi — University of North Texas*
 > SWDSI Conference Presentation · March 2026
 
 📄 [Read the Paper](https://chaitrapulletikurthi.github.io/AI_Agent_Article/) &nbsp;|&nbsp; 🔬 [View Notebook](Agent.ipynb)
