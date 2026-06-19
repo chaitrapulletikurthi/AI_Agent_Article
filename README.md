@@ -14,7 +14,6 @@
 
 ---
 
-## Situation
 
 Small hospitality businesses — hotels, resorts, pet boarding facilities — miss a lot of phone calls during busy hours. The bigger issue is not the missed call itself, but not knowing *which* missed calls were actually important. Was it a one-time guest asking a simple question, or a high-value repeat customer ready to book?
 
@@ -22,13 +21,11 @@ Most tools only tell you *how many* calls came in. They don't tell you *which on
 
 ---
 
-## Task
 
 Design an AI system that could **listen to missed calls, understand what the caller wanted, and rank them** — so staff know exactly who to call back first without having to listen to every voicemail manually.
 
 ---
 
-## Action
 
 Built a five-step AI pipeline:
 
@@ -42,7 +39,6 @@ To test this in the real world, the framework was applied to **Pet Connect AI**,
 
 ---
 
-## Result
 
 Given three simultaneous missed calls, the system correctly ranked them by business priority — not by who called first. Staff could see at a glance which callback would have the most impact, saving time and recovering opportunities that would otherwise be lost.
 
