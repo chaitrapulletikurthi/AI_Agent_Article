@@ -1,96 +1,64 @@
 <div align="center">
 
-# 📞 Echoes of the Unheard
+# Echoes of the Unheard
 
-**What if the call you missed was your most valuable one?**
+### An AI system that helps small businesses figure out which missed calls to return first
 
-*A research paper presented at SWDSI Conference · March 2026*
-*Chaitra Neha Pulletikurthi & Neola Grannita D Sa · University of North Texas*
+*Research Paper · SWDSI Conference · March 2026*
+*Chaitra Neha Pulletikurthi · University of North Texas*
 
 [![Read Paper](https://img.shields.io/badge/Read%20Paper-Live%20Site-blueviolet?style=for-the-badge)](https://chaitrapulletikurthi.github.io/AI_Agent_Article/)
 [![Notebook](https://img.shields.io/badge/View-Notebook-orange?style=for-the-badge&logo=jupyter)](Agent.ipynb)
-[![Conference](https://img.shields.io/badge/SWDSI-2026-green?style=for-the-badge)]()
 
 </div>
 
 ---
 
-## The $126,000 Problem
+## Situation
 
-Every year, small hospitality businesses lose roughly **$126,000** from missed calls alone.
-**85%** of those callers never try again.
-Losing just **10%** of peak-hour calls? That's **$27,000** in vanished revenue.
+Small hospitality businesses — hotels, resorts, pet boarding facilities — miss a lot of phone calls during busy hours. The bigger issue is not the missed call itself, but not knowing *which* missed calls were actually important. Was it a one-time guest asking a simple question, or a high-value repeat customer ready to book?
 
-The real kicker: most businesses already have a dashboard showing them call volumes, response times, and queue lengths — and none of it tells them *which call actually mattered*.
-
-> *"74% of current customer service systems measure operational activity, not business value."*
+Most tools only tell you *how many* calls came in. They don't tell you *which ones mattered*.
 
 ---
 
-## What This Research Builds
+## Task
 
-An **agentic AI framework** that listens, understands, and ranks — so when you can't answer every call, you at least call back in the right order.
-
-📞 Incoming Call
-↓
-🛡️ Safety Screening
-↓
-🎙️ Real-Time Speech-to-Text
-↓
-🧠 AI Extracts → Sentiment · Urgency · Revenue Potential
-↓
-⚖️ MCDA Priority Score
-Score = w₁(Sentiment) + w₂(Urgency) + w₃(Business Value)
-↓
-🔀 Route: Auto-response ──or── Human Escalation
-
+Design an AI system that could **listen to missed calls, understand what the caller wanted, and rank them** — so staff know exactly who to call back first without having to listen to every voicemail manually.
 
 ---
 
-## From Theory to the Real World
+## Action
 
-This framework was validated through **Pet Connect AI** — a live voice receptionist prototype built for *PlayStayTion Pet Resort & Training*.
+Built a five-step AI pipeline:
 
-> A 24/7 AI that answers every call, scores every lead, and keeps the front desk calm
-> — so staff can focus on the animals, not the phone.
+1. **Recorded the call** and screened it for basic safety
+2. **Converted speech to text** in real time
+3. **Used AI to extract signals** — how urgent was the caller? How positive or negative was their tone? Were they likely to spend money?
+4. **Scored each call** using a weighted formula that balances all three signals
+5. **Routed the call** — simple questions got an automated text reply, complex ones were flagged for a human to follow up
 
----
-
-## Results at a Glance
-
-Three simultaneous calls. One priority stack.
-
-| Call | Type | Priority |
-|------|------|----------|
-| 🟢 Call A | High-value repeat customer, urgent tone | **HIGH** |
-| 🟡 Call B | General inquiry, neutral sentiment | MEDIUM |
-| 🔴 Call C | Low-urgency, low revenue signal | LOW |
-
-Ranked by *business value* — not arrival order.
+To test this in the real world, the framework was applied to **Pet Connect AI**, a voice receptionist prototype built for a pet resort. It handled incoming calls, scored leads, and helped staff prioritize their follow-ups.
 
 ---
 
-## Tech Stack
+## Result
 
-| Layer | Tool |
-|-------|------|
-| Speech-to-Text | Real-time transcription pipeline |
-| Signal Extraction | NLP — sentiment, urgency, intent |
-| Decision Engine | Multi-Criteria Decision Analysis (MCDA) |
-| Implementation | Python · Jupyter Notebook |
-| Article / Demo | HTML · CSS · GitHub Pages |
+Given three simultaneous missed calls, the system correctly ranked them by business priority — not by who called first. Staff could see at a glance which callback would have the most impact, saving time and recovering opportunities that would otherwise be lost.
 
 ---
 
-## Keywords
+## What's in This Repo
 
-`Voice AI` · `Agentic AI` · `MCDA` · `Hospitality Analytics` · `Customer Prioritization` · `NLP` · `Speech-to-Text` · `AI Agents`
+| File | What it is |
+|------|------------|
+| `index.html` | The published research article (live on GitHub Pages) |
+| `Agent.ipynb` | Python notebook with the full implementation |
+| `framework.png` | Visual diagram of the five-step pipeline |
+| `dashboard.png` | Screenshot of the Pet Connect AI booking dashboard |
 
 ---
 
-<div align="center">
+## Skills Demonstrated
 
-*"This isn't automation replacing judgment.*
-*It's AI amplifying judgment — at scale, in real time."*
-
-</div>
+`Python` · `NLP` · `Speech-to-Text` · `Agentic AI` · `Decision Analysis` · `Research & Writing` · `HTML/CSS`
