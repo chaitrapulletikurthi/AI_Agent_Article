@@ -1,47 +1,96 @@
-# Echoes of the Unheard
-### How an Agentic AI Framework Is Redefining Customer Interaction Prioritization for Small Hospitality Businesses
+<div align="center">
 
-> *Chaitra Neha Pulletikurthi — University of North Texas*
-> SWDSI Conference Presentation · March 2026
+# 📞 Echoes of the Unheard
 
-📄 [Read the Paper](https://chaitrapulletikurthi.github.io/AI_Agent_Article/) &nbsp;|&nbsp; 🔬 [View Notebook](Agent.ipynb)
+**What if the call you missed was your most valuable one?**
+
+*A research paper presented at SWDSI Conference · March 2026*
+*Chaitra Neha Pulletikurthi & Neola Grannita D Sa · University of North Texas*
+
+[![Read Paper](https://img.shields.io/badge/Read%20Paper-Live%20Site-blueviolet?style=for-the-badge)](https://chaitrapulletikurthi.github.io/AI_Agent_Article/)
+[![Notebook](https://img.shields.io/badge/View-Notebook-orange?style=for-the-badge&logo=jupyter)](Agent.ipynb)
+[![Conference](https://img.shields.io/badge/SWDSI-2026-green?style=for-the-badge)]()
+
+</div>
 
 ---
 
-## Overview
+## The $126,000 Problem
 
-Missed calls cost small hospitality businesses ~$126,000/year. 85% of unanswered callers never call back. This research introduces a voice-based agentic AI system that doesn't just log missed calls — it **ranks them by business value** so you call back the ones that matter most, first.
+Every year, small hospitality businesses lose roughly **$126,000** from missed calls alone.
+**85%** of those callers never try again.
+Losing just **10%** of peak-hour calls? That's **$27,000** in vanished revenue.
 
-## The Problem
+The real kicker: most businesses already have a dashboard showing them call volumes, response times, and queue lengths — and none of it tells them *which call actually mattered*.
 
-Traditional customer service dashboards track volume and response time but ignore *which interactions actually matter*. 74% of current systems measure operational activity, not business value.
+> *"74% of current customer service systems measure operational activity, not business value."*
 
-## Framework Architecture
+---
 
-A five-stage intelligent pipeline:
+## What This Research Builds
 
-| Stage | Description |
-|-------|-------------|
-| 1. Call Intake | Safety screening of incoming calls |
-| 2. Transcription | Real-time speech-to-text conversion |
-| 3. Signal Extraction | AI extracts sentiment, urgency, and revenue potential |
-| 4. Priority Scoring | `Score = w₁(Sentiment) + w₂(Urgency) + w₃(Business Value)` |
-| 5. Routing | Auto-response for simple queries; human escalation for complex cases |
+An **agentic AI framework** that listens, understands, and ranks — so when you can't answer every call, you at least call back in the right order.
 
-## Key Result
+📞 Incoming Call
+↓
+🛡️ Safety Screening
+↓
+🎙️ Real-Time Speech-to-Text
+↓
+🧠 AI Extracts → Sentiment · Urgency · Revenue Potential
+↓
+⚖️ MCDA Priority Score
+Score = w₁(Sentiment) + w₂(Urgency) + w₃(Business Value)
+↓
+🔀 Route: Auto-response ──or── Human Escalation
 
-Three simultaneous calls ranked into High / Medium / Low priority tiers based on combined MCDA scoring — not arrival order.
 
-> *"This isn't automation replacing judgment. It's AI amplifying judgment — at scale, in real time."*
+---
+
+## From Theory to the Real World
+
+This framework was validated through **Pet Connect AI** — a live voice receptionist prototype built for *PlayStayTion Pet Resort & Training*.
+
+> A 24/7 AI that answers every call, scores every lead, and keeps the front desk calm
+> — so staff can focus on the animals, not the phone.
+
+---
+
+## Results at a Glance
+
+Three simultaneous calls. One priority stack.
+
+| Call | Type | Priority |
+|------|------|----------|
+| 🟢 Call A | High-value repeat customer, urgent tone | **HIGH** |
+| 🟡 Call B | General inquiry, neutral sentiment | MEDIUM |
+| 🔴 Call C | Low-urgency, low revenue signal | LOW |
+
+Ranked by *business value* — not arrival order.
+
+---
 
 ## Tech Stack
 
-- **Speech-to-Text**: Real-time transcription pipeline
-- **NLP**: Sentiment & urgency extraction
-- **Decision Framework**: Multi-Criteria Decision Analysis (MCDA)
-- **Notebook**: Python (Jupyter)
-- **Demo Page**: HTML/CSS
+| Layer | Tool |
+|-------|------|
+| Speech-to-Text | Real-time transcription pipeline |
+| Signal Extraction | NLP — sentiment, urgency, intent |
+| Decision Engine | Multi-Criteria Decision Analysis (MCDA) |
+| Implementation | Python · Jupyter Notebook |
+| Article / Demo | HTML · CSS · GitHub Pages |
+
+---
 
 ## Keywords
 
-`Agentic AI` · `MCDA` · `Voice AI` · `Hospitality Analytics` · `Customer Prioritization` · `NLP`
+`Voice AI` · `Agentic AI` · `MCDA` · `Hospitality Analytics` · `Customer Prioritization` · `NLP` · `Speech-to-Text` · `AI Agents`
+
+---
+
+<div align="center">
+
+*"This isn't automation replacing judgment.*
+*It's AI amplifying judgment — at scale, in real time."*
+
+</div>
